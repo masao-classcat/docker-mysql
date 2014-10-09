@@ -3,8 +3,7 @@
 FROM ubuntu:14.04
 MAINTAINER Masashi Okumura <masao@classcat.com>
 
-RUN apt-get update
-RUN apt-get install -y mysql-server
+RUN apt-get update && apt-get install -y mysql-server
 
 RUN sed -i -e "s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
 
