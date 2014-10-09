@@ -6,9 +6,11 @@ MAINTAINER Masashi Okumura <masao@classcat.com>
 RUN apt-get update
 RUN apt-get install -y mysql-server
 
-ADD cc-init /var/tmp/cc-init
-RUN chmod 755 /var/tmp/cc-init
+#RUN sed -i -e "s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
+
+ADD cc-init /cc-init
+RUN chmod 755 /cc-init
 
 EXPOSE 3306
 
-CMD ["/var/tmp/cc-init"]
+CMD ["/cc-init"]
